@@ -44,7 +44,7 @@ n? 	匹配任何包含零个或一个 n 的字符串。
 test() 方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。
 exec() 方法用于检索字符串中的正则表达式的匹配，该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。 
 23.try catch finally throw 都和C#语法基本一致
-24.JavaScript 中，函数及变量的声明都将被提升到函数的最顶部。 后面的变量前面使用不会报错，但是会是undefined。
+24.JavaScript 中，函数及变量的声明都将被提升到函数的最顶部。 后面的变量前面使用不会报错，但是会是undefined。变量提升。
 25.严格模式通过在脚本或函数的头部添加 use strict，严格模式下你不能使用未声明的变量。
 26.return 语句不能断行， 在 JavaScript 中，分号是可选的 。由于 return 是一个完整的语句，所以 JavaScript 将关闭 return 语句。
 27.在每个代码块中 JavaScript 不会创建一个新的作用域，一般各个代码块的作用域都是全局的。for语句中的var i =0；可以在循环后读到值，不是undefined。
@@ -58,4 +58,46 @@ min 	规定输入元素的最小值
 pattern 	规定输入元素值的模式
 required 	规定输入元素字段是必需的
 type  	规定输入元素的类型
-29.
+29.在输入限制是通过Validity实现，其中有rangeOverflow rangeUnderflow 等可选输出错误提示条件。 setCustomValidity() 可以设置提示的信息。
+30.面向对象语言中 this 表示当前对象的一个引用。
+但在 JavaScript 中 this 不是固定不变的，它会随着执行环境的改变而改变。
+    在对象方法中，this 表示该方法所属的对象。
+    如果单独使用，this 表示全局对象。
+    在函数中，this 表示全局对象。
+    在函数中，在严格模式下，this 是未定义的(undefined)。
+    在 HTML 事件句柄中，this 表示接收事件的元素。
+    apply 和 call 允许切换函数执行的上下文环境（context），即 this 绑定的对象，可以将 this 引用到任何对象。
+最后一个解释：person1.fullName.call(person2);   使用了person1里面的方法，但是调用了person2里面的参数。
+var person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+var person2 = {
+  firstName:"John",
+  lastName: "Doe",
+}
+person1.fullName.call(person2);  // 返回 "John Doe"
+31.函数内声明的变量是局部的，但是{}块内声明的确实全局的，例如在循环条件语句块中。现在在新加了let来取代var，使得在{}中的变量不是在{}外使用，
+使用 let 关键字声明的全局作用域变量不属于 window 对象。
+32.const 的本质: const 定义的变量并非常量，并非不可变，它定义了一个常量引用一个值。使用 const 定义的对象或者数组，其实是可变的，声明时必须进行初始化。值类型不可变，引用类型可变。
+const 关键字在不同作用域，或不同块级作用域中是可以重新声明赋值的。
+33.json （ javascript object notation）   
+JSON 语法规则：数据为 键/值 对，都有双引号；数据由逗号分隔；大括号保存对象；方括号保存数组。 注意：多行显示要不使用+ “”'' ,要不就是使用\反斜杠。
+var text = '{ "sites" : [' +
+	'{ "name":"Runoob" , "url":"www.runoob.com" },' +
+	'{ "name":"Google" , "url":"www.google.com" },' +
+	'{ "name":"Taobao" , "url":"www.taobao.com" } ]}';	
+
+var text = '{ "sites" : [{ "name":"Runoob" , "url":"www.runoob.com" },\
+{ "name":"Google" , "url":"www.google.com" },\
+{ "name":"Taobao" , "url":"www.taobao.com" } ]}';
+
+obj = JSON.parse(text);
+document.getElementById("demo").innerHTML = obj.sites[1].name + "   " + obj.sites[1].url;
+//Google   www.google.com
+JSON.stringify()	用于将 JavaScript 值转换为 JSON 字符串。
+34.
+
+    
+    

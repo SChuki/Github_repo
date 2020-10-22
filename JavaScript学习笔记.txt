@@ -1,0 +1,61 @@
+1.JS中的object类型与python中的字典或者json很像，不同的地方在于能够定义方法，通过方法名来访问方法的具体类容，通过方法名()来执行方法。
+2.JS的数据类型有Number、String、Array、Object、Boolen等，可以声明的是动态的变量。
+3.JS的显示输出有4中形式，document.write()嵌入包含开闭符号的语句，innerHTML= 修改已有的开闭段文本，console.log() 打印输出，
+window.alert() 弹出提示框。
+4.JS的函数不用定义返回指的类型，这点和python很像。
+5.变量的生命周期：局部变量会在函数运行以后被删除，全局变量会在页面关闭后被删除。和其他语言一样
+6.如果您把值赋给尚未声明的变量，该变量将被自动作为 window 的一个属性。
+7.非严格模式下给未声明变量赋值创建的全局变量（在window上定义），是全局对象的可配置属性，可以使用delete删除，使用var声明的就不能删除。
+8.常用的html事件有onchange、onclick、onload、onmouseover、onmouseout、onkeydown。事件主要是来源于DOM。
+9.字符串也可以通过索引来访问，通过str.length来访问字符串长度。length 还能用来访问Array的元素个数。
+10.字符串也是对象，可以通过new来创建，这点和c#很像，但是一般不用。 typeof str 可以查看数据类型。
+11.字符串能用的方法和c#的也很像，有substring、replace、索引定位、连接字符串等。
+12.运算符以及比较符号和C#基本一致。反斜杠\同样能够去掉特殊符号意义。"  \" demo\"   "
+13.for 循环 if 语句 switch语句和C#语法一致，但是需要注意有一个for/in循环能够通过属性名称访问object。
+不过可以为循环命名，例如outerloop: for (var i = 0; i < 10; i++){}，目的是控制循环。
+14.document.write()的执行在加载完页面之后时，会将已加载的页面重写。
+15.continue 语句（带有或不带标签引用）只能用在循环中；break 语句（不带标签引用），只能用在循环或 switch 中。
+通过标签引用，break 语句可用于跳出任何 JavaScript 代码块。有了标签，可以使用break和continue在多层循环的时候控制外层循环。
+16.“===”表示严格相等，判断值类型的时候首先是判断数据类型是否相等，引用类型则是判断引用地址。false ==='0' //fasle
+“==”类似于普通的相等，会有数据转换比较，一般不会对比较变量本身产生影响（除非toString或valueOf方法被覆写成特定用途了）。false == '0'//true
+17.undefined 和null都能清空对象，一般使用null主动释放对象，undefined表示变量声明过但并未赋过值。
+18.Number() 转换为数字， String() 转换为字符串，tostring()也可以， Boolean() 转化为布尔值。object转化为字符串是[object object]。.parseFloat() .parseInt()
+19.Date 方法：getDay() getDate() getFullYear() getHours() getSeconds() getMonth()  等
+20. Regular Expression 语法： /正则表达式主体/修饰符(可选)，通常用于两个字符串方法 : search() 和 replace()。
+i  执行对大小写不敏感的匹配，g 执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。
+21.
+方括号用于查找某个范围内的字符：
+表达式 	描述
+[abc] 	查找方括号之间的任何字符。
+[0-9] 	查找任何从 0 至 9 的数字。
+(x|y) 	查找任何以 | 分隔的选项。
+元字符是拥有特殊含义的字符：
+元字符 	描述
+\d 	查找数字。
+\s 	查找空白字符。
+\b 	匹配单词边界。
+\uxxxx 	查找以十六进制数 xxxx 规定的 Unicode 字符。
+量词:
+量词 	描述
+n+ 	匹配任何包含至少一个 n 的字符串。
+n* 	匹配任何包含零个或多个 n 的字符串。
+n? 	匹配任何包含零个或一个 n 的字符串。
+22.在 JavaScript 中，RegExp 对象是一个预定义了属性和方法的正则表达式对象。
+test() 方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。
+exec() 方法用于检索字符串中的正则表达式的匹配，该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。 
+23.try catch finally throw 都和C#语法基本一致
+24.JavaScript 中，函数及变量的声明都将被提升到函数的最顶部。 后面的变量前面使用不会报错，但是会是undefined。
+25.严格模式通过在脚本或函数的头部添加 use strict，严格模式下你不能使用未声明的变量。
+26.return 语句不能断行， 在 JavaScript 中，分号是可选的 。由于 return 是一个完整的语句，所以 JavaScript 将关闭 return 语句。
+27.在每个代码块中 JavaScript 不会创建一个新的作用域，一般各个代码块的作用域都是全局的。for语句中的var i =0；可以在循环后读到值，不是undefined。
+该处和c# python都不一致。
+28.js的表单验证有两部分 服务器数据验证和客户端数据验证，HTML5 新增了 HTML 表单的验证方式：约束验证（constraint validation）。
+约束验证 HTML 输入属性
+属性 	描述
+disabled 	规定输入的元素不可用
+max 	规定输入元素的最大值
+min 	规定输入元素的最小值
+pattern 	规定输入元素值的模式
+required 	规定输入元素字段是必需的
+type  	规定输入元素的类型
+29.

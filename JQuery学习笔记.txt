@@ -1,0 +1,15 @@
+1.jQuery 语法是通过选取 HTML 元素，并对选取的元素执行某些操作。
+基础语法： $(selector).action()
+    美元符号定义 jQuery
+    选择器（selector）"查询"和"查找" HTML 元素
+    jQuery 的 action() 执行对元素的操作
+2.Jquery 使用ready（）的原因是DOM 加载完成后才可以对 DOM 进行操作。如果在文档没有完全加载之前就运行函数，操作可能失败。
+3.jQuery 入口函数与 JavaScript 入口函数的区别：
+    jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行，可以多次执行不会覆盖。
+    JavaScript 的 window.onload 事件是等到所有内容，包括外部图片之类的文件加载完后，才会执行，再次执行时会覆盖。
+4.jQuery执行语句有解释器和时间两个部分来操作DOM
+解释器的写法和CSS类似，$("*") $("p") $("this") $(":button") $("[type = 'demo']") $(".classname") 等
+常用的事件方法：
+click()  dblclick()  mouseenter()  mouseleave() mousedown() mouseup() hover() focus() blur()失去焦点
+hide(speed ,callback ) show(speed ,callback)  可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
+可选的 callback 参数是隐藏或显示完成后所执行的函数名称。

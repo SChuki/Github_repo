@@ -97,7 +97,151 @@ obj = JSON.parse(text);
 document.getElementById("demo").innerHTML = obj.sites[1].name + "   " + obj.sites[1].url;
 //Google   www.google.com
 JSON.stringify()	用于将 JavaScript 值转换为 JSON 字符串。
-34.
+34.javascript:void(alert('Warning!!!'))中void方法会执行但是会返回值为0；
+<a href="javascript:void(0)">单击此处什么也不会发生</a>
+href="#"与href="javascript:void(0)"的区别
+# 包含了一个位置信息，默认的锚是#top 也就是网页的上端。
+而javascript:void(0), 仅仅表示一个死链接。
+在页面很长的时候会使用 # 来定位页面的具体位置，格式为：# + id。
+35.js使用setTimeout实现异步，setTimeout(callbackfunc , MS),第一个参数是回调函数，第二个参数是休眠时间。使用在主线程中不会发生阻塞。
+除了 setTimeout 函数以外，异步回调广泛应用于 AJAX 编程。
+36.Promise 构造函数只有一个参数，是一个函数，这个函数在构造之后会直接被异步运行，所以我们称之为起始函数。起始函数包含两个参数 resolve 和 reject。
+resolve 和 reject 都是函数，其中调用 resolve 代表一切正常，reject 是出现异常时所调用的。
+Promise 类有 .then() .catch() 和 .finally() 三个方法，这三个方法的参数都是一个函数，.then() 可以将参数中的函数添加到当前 Promise 的正常执行序列，
+.catch() 则是设定 Promise 的异常处理序列，.finally() 是在 Promise 执行的最后一定会执行的序列。 .then() 传入的函数会按顺序依次执行，
+有任何异常都会直接跳到 catch 序列
+resolve() 中可以放置一个参数用于向下一个 then 传递一个值，then 中的函数也可以返回一个值传递给 then。但是，如果 then 中返回的是一个 Promise 对象，
+那么下一个 then 将相当于对这个返回的 Promise 进行操作。reject() 参数中一般会传递一个异常给之后的 catch 函数用于处理异常。
+但是请注意以下两点：
+    resolve 和 reject 的作用域只有起始函数，不包括 then 以及其他序列；
+    resolve 和 reject 并不能够使起始函数停止运行，别忘了 return。
+异步函数 async function 中可以使用 await 指令，await 指令后必须跟着一个 Promise，异步函数会在这个 Promise 运行中暂停，直到其运行结束再继续运行。
+37.函数实现可以通过匿名函数的形式，使用函数表达式，函数存储在变量中，不需要函数名称，通常通过变量名来调用。
+var myFunction = function (a, b) {return a * b};
+var x = myFunction(4, 3);
+通过构造函数实现：
+var myFunction = new Function("a", "b", "return a * b");
+var x = myFunction(4, 3);
+在 JavaScript 中，很多时候，你需要避免使用 new 关键字。
+38.函数也可以使用lamda表达式  const x = (x, y) => { return x * y };
+39.js的可选参数es6中：
+function myFunction(x, y = 10) {
+    // y is 10 if not passed or undefined
+    return x + y;
+}
+myFunction(0, 2) // 输出 2
+myFunction(5); // 输出 15, y 参数的默认值
+也可直接使用JavaScript 函数有个内置的对象 arguments 对象。
+函数在定义时，可以不设置形参：
+x = findMax(1, 123, 500, 115, 44, 88);
+function findMax() {
+    var i, max = arguments[0];
+    if(arguments.length < 2) return max;
+    for (i = 0; i < arguments.length; i++) {
+        if (arguments[i] > max) {
+            max = arguments[i];
+        }
+    }
+    return max;
+}
+40.call() 和 apply() 是预定义的函数方法。 两个方法可用于调用函数，两个方法的第一个参数必须是对象本身。
+两者的区别在于第二个参数： apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。
+41.所有函数都能访问全局变量。JavaScript 支持嵌套函数。嵌套函数可以访问上一层的函数变量。 
+42.闭包就是能够读取其他函数内部变量的函数，通过函数嵌套的方式。闭包可以用在许多地方，
+它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。
+原因就在于f1是f2的父函数，而f2被赋给了一个全局变量，这导致f2始终在内存中，而f2的存在依赖于f1，因此f1也始终在内存中，
+不会在调用结束后，被垃圾回收机制（garbage collection）回收。
+1）由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。
+解决方法是，在退出函数之前，将不使用的局部变量全部删除。
+2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），
+把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。
+回调的根本就是垃圾未回收，未回收的原因时是，通过在外部直接引用内部函数导致外部函数被间接引用，这使得外部函数的局部变量不会被清除。
+43.当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。 通过DOM，
+    JavaScript 能够改变页面中的所有 HTML 元素
+    JavaScript 能够改变页面中的所有 HTML 属性
+    JavaScript 能够改变页面中的所有 CSS 样式
+    JavaScript 能够对页面中的所有事件做出反应
+44.查找元素： 未找到返回null
+var x=document.getElementById("intro"); 
+var x=document.getElementsByClassName("intro");
+var y=document.getElementsByTagName("p");
+45.改变HTML的内容使用：document.getElementById(id).innerHTML = 新内容
+改变属性使用：document.getElementById(id).attribute=新属性值
+改变CSS样式使用： document.getElementById(id).style.property=新样式
+55.为HTML添加事件，不知可以通过元素属性设置，也可以通过addEventListener() 方法用于向指定元素添加事件句柄。
+element.addEventListener(event, function, useCapture)   element.detachEvent(event, function);
+IE 8 及更早 IE 版本，Opera 7.0及其更早版本不支持 addEventListener() 和 removeEventListener() 方法。 有解决方案，通过判断兼容。
+第一个参数是事件的类型 (如 "click" 或 "mousedown")，注意不要使用on。
+第二个参数是事件触发后调用的函数。
+第三个参数是个布尔值用于描述事件是冒泡还是捕获。默认值为 false, 即冒泡传递，当值为 true 时, 事件使用捕获传递。
+56.事件传递有两种方式：冒泡与捕获。
+在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素。
+在 捕获 中，外部元素的事件会先被触发，然后才会触发内部元素的事件。
+57.DOM 节点（元素）
+新增部分
+var para = document.createElement("p"); //创建一个新节点
+var node = document.createTextNode("这是一个新的段落。"); //创建节点内容
+para.appendChild(node); //将节点内容添加到元素
+var element = document.getElementById("div1");  //搜寻已有的节点
+element.appendChild(para); //将新节点添加到已有节点中，添加新元素到尾部
 
-    
-    
+var child = document.getElementById("p1");  //搜寻已有节点
+element.insertBefore(para, child); //将新节点添加到element大节点中的child小节点的前面。
+
+删除部分
+parent.removeChild(child); // 从parent节点中移除child节点
+child.parentNode.removeChild(child); //删除节点必须知道父节点
+替换部分
+parent.replaceChild(para, child); //新节点替换旧节点
+58. DOM 集合（collection）
+getElementsByTagName()  //返回像一个数组，HTMLCollection 无法使用数组的方法： valueOf(), pop(), push(), 或 join() 。
+var c = document.forms;		//这是 form 元素的一个 HTMLCollection 对象
+var firstform = c[0];		//能够以数字数组来使用
+var lastform = c[c.length-1];	//length 属性返回元素数
+var address = c["address"];		//能够以关联数组来使用
+var address = c.address;		//JavaScript 允许这样的表示法
+59.NodeList
+var myNodeList = document.querySelectorAll("p"); //NodeList 对象是一个从文档中获取的节点列表。
+NodeList 只能通过索引来获取。只有 NodeList 对象有包含属性节点和文本节点。
+60.prototype （原型）
+function Person(first, last, age, eyecolor) {
+ this.firstName = first;
+ this.lastName = last;
+ this.age = age;
+ this.eyeColor = eyecolor;
+} //这个函数是一个构造器函数  可以把他看着是C#的类，调用实现实例化
+当需要添加类（对象）的属性是可以：
+Person.prototype.nationality = "English";
+也可以重写 Person.prototype={};
+61.如果前缀为 0，则 JavaScript 会把数值常量解释为八进制数，如果前缀为 0x，则解释为十六进制数。Number.toFixed()等指定小数点格式
+var a=123; b=a.toFixed(2); // b="123.00"
+62.Math类方法
+document.write(Math.round(4.7)); //round 四舍五入
+document.write(Math.random()); //介于0-1之间的随机小数
+document.write(Math.floor(Math.random()*11));  //介于0-11之间的随机整数
+63.当使用构造函数创造正则对象时，需要常规的字符转义规则（在前面加反斜杠 \）。比如，以下是等价的：
+var re = new RegExp("\\w+");
+var re = /\w+/;
+64.浏览器对象模型  browser object model (BOM) 使 JavaScript 有能力与浏览器"对话"。所有浏览器都支持 window 对象。
+window.screen对象在编写时可以不使用 window 这个前缀。
+一些属性：
+    screen.availWidth - 可用的屏幕宽度  以像素计，减去界面特性，比如窗口任务栏。
+    screen.availHeight - 可用的屏幕高度
+
+    location.hostname 返回 web 主机的域名
+    location.pathname 返回当前页面的路径和文件名
+    location.port 返回 web 主机的端口 （80 或 443）
+    location.protocol 返回所使用的 web 协议（http: 或 https:）
+window.location.assign(url) ： 加载 URL 指定的新的 HTML 文档。 就相当于一个链接，跳转到指定的url，
+当前页面会转为新页面内容，可以点击后退返回上一个页面。
+window.location.replace(url) ： 通过加载 URL 指定的文档来替换当前文档 ，这个方法是替换当前窗口页面，
+前后两个页面共用一个窗口，所以是没有后退返回上一页的  
+    history.back() - 与在浏览器点击后退按钮相同   // go() 里面的参数表示跳转页面的个数 例如 history.go(1) 表示前进一个页面
+    history.forward() - 与在浏览器中点击向前按钮相同  // go() 里面的参数表示跳转页面的个数 例如 history.go(-1) 表示后退一个页面
+    // go() 里面的参数为0,表示刷新页面
+    window.navigator 对象包含有关访问者浏览器的信息。
+    提示框prompt()    提示框经常用于提示用户在进入页面前输入某个值,无值是返回null
+    警告框alert()
+    确认框confirm()   当你点击 "确认", 确认框返回 true， 如果点击 "取消", 确认框返回 false。
+    \n 换行
+65.计时时间 setTimeout  clearTimeout   setInterval  clearInterval。

@@ -1,0 +1,93 @@
+1.querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素，换句话就是可以通过选择器的格式选取元素，比ById方便。
+2.通过anvas标签实现绘制图像，canvas是创建画布具有宽高属性，通过画布获得上下文绘制图像。
+3.<canvas> 只支持一种原生的图形绘制：矩形。canvast 提供了三种方法绘制矩形：
+fillRect(x, y, width, height)：绘制一个填充的矩形。
+strokeRect(x, y, width, height)：绘制一个矩形的边框。
+clearRect(x, y, widh, height)：清除指定的矩形区域，然后这块区域会变的完全透明。 
+x,y是相对于画布的顶点位置，顶点为0，0.
+ctx.fillStyle = "rgb(200,0,0)";  设置颜色，rgb和rgba，a是指透明度。
+4.图形的基本元素是路径。
+    beginPath()
+    新建一条路径，路径一旦创建成功，图形绘制命令被指向到路径上生成路径
+    moveTo(x, y)
+    把画笔移动到指定的坐标(x, y)。相当于设置路径的起始点坐标。
+    closePath()
+    闭合路径之后，图形绘制命令又重新指向到上下文中
+    stroke()
+    通过线条来绘制图形轮廓（描边）
+    fill()
+    通过填充路径的内容区域生成实心的图形（填充，会自动封闭路径
+5.绘制圆弧
+arc(x, y, r, startAngle, endAngle, anticlockwise): 以(x, y) 为圆心，以r 为半径，从 startAngle 弧度开始到endAngle弧度结束。
+anticlosewise 是布尔值，true 表示逆时针，false 表示顺时针(默认是顺时针)。
+注意： 这里的度数都是弧度。0 弧度是指的 x 轴正方向。
+arcTo(x1, y1, x2, y2, radius): 根据给定的控制点和半径画一段圆弧，最后再以直线连接两个控制点。
+//参数1、2：控制点1坐标   参数3、4：控制点2坐标  参数4：圆弧半径                  moveTo（）外加起始点
+还可以绘制贝塞尔曲线，包括二次，三次贝塞尔曲线。
+6.fillStyle = color 设置图形的填充颜色，strokeStyle = color 设置图形轮廓的颜色color 可以是表示 css 颜色值的字符串、渐变对象或者图案对象。默认为黑色。
+7.绘制曲线 ctx.moveTo，ctx.lineTo，ctx.lineWidth.
+lineCap = type 线条末端样式。
+共有 3 个值：butt：线段末端以方形结束  round：线段末端以圆形结束
+square：线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段厚度一半的矩形区域。
+8.lineJoin = type
+同一个 path 内，设定线条与线条间接合处的样式。
+共有 3 个值 round, bevel 和 miter：
+    round 通过填充一个额外的，圆心在相连部分末端的扇形，绘制拐角的形状。 圆角的半径是线段的宽度。
+    bevel 在相连部分的末端填充一个额外的以三角形为底的区域， 每个部分都有各自独立的矩形拐角。
+    miter(默认) 通过延伸相连部分的外边缘，使其相交于一点，形成一个额外的菱形区域。
+9.用 setLineDash 方法和 lineDashOffset 属性来制定虚线样式。 setLineDash 方法接受一个数组，来指定线段与间隙的交替；
+lineDashOffset属性设置起始偏移量。  ctx.setLineDash([20, 5]);  // [实线长度, 间隙长度]
+10.渲染文本：
+fillText(text, x, y [, maxWidth]) 在指定的 (x,y) 位置填充指定的文本，绘制的最大宽度是可选的。
+strokeText(text, x, y [, maxWidth]) 在指定的 (x,y) 位置绘制文本边框，绘制的最大宽度是可选的
+给文本添加样式
+    font = value 当前我们用来绘制文本的样式。这个字符串使用和 CSS font 属性相同的语法。 默认的字体是 10px sans-serif。
+    textAlign = value 文本对齐选项。 可选的值包括：start, end, left, right or center。 默认值是 start。
+    textBaseline = value 基线对齐选项，可选的值包括：top, hanging, middle, alphabetic, ideographic, bottom。默认值是 alphabetic。。
+    direction = value 文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。
+11.存在一个浏览器存在“同源策略”的机制，使得不能直接从本地文件夹读取文件，可以关闭浏览器的file检测或者是设置本地静态浏览器 live server。
+12.通过学习three.js库实现3d建模，通过对webgl的封装实现的。
+13.OrbitControls.js控件支持鼠标左中右键操作和键盘方向键操作
+执行构造函数THREE.OrbitControls()浏览器会同时干两件事，一是给浏览器定义了一个鼠标、键盘事件，自动检测鼠标键盘的变化
+，如果变化了就会自动更新相机的数据， 执行该构造函数同时会返回一个对象，可以给该对象添加一个监听事件，只要鼠标或键盘发生了变化，就会触发渲染函数。
+注意开发中不要同时使用requestAnimationFrame()或controls.addEventListener('change', render)调用同一个函数。
+14.第一个参数radius约束的是球的大小，参数widthSegments、heightSegments约束的是球面的精度这样会冲突。
+15.注意网格模型Mesh进行缩放旋转平移变换和几何体Geometry可以实现相同的渲染效果，
+但是网格模型Mesh进行这些变换不会影响几何体的顶点位置坐标，网格模型缩放旋转平移变换改变的是模型的本地矩阵、世界矩阵。
+16.通过本节课的学习，对Threejs不同对象的克隆.clone()和复制.copy()方法有一个大致印象即可。
+实际开发的时候，注意不同对象的复制或克隆方法可能稍有区别，使用的时候最好通过代码测试，
+或者直接查看threejs源码某个类对.clone()和.copy()封装，这样更为直观清楚。
+17.three.js的光源由点光源(灯泡,需要设置位置 颜色)  平行光(太阳,需要设置位置和目标 颜色) 自然光(只需要设置颜色) 
+聚光源(聚光灯,需要设置位置 目标 颜色 发散角度).
+18.Three.js物体投影模拟计算主要设置三部分，一个是设置产生投影的模型对象，一个是设置接收投影效果的模型，
+最后一个是光源对象本身的设置，光源如何产生投影。
+19.光源颜色属性.color和强度属性.intensity
+20.层级模型,可以使用group连接,group相当于容器.
+21.使用three.js时需要注意mesh.rotate是旋转物体并非转转坐标系，同时旋转时是围绕中点开始的。
+22.本地坐标系是以物体为原点得坐标系，当一个物体添加到其他物体中去的时候世界坐标系话发生变化；相机默认在世界坐标系的原点换句话就是scene的坐标系。
+23.所有的几何体的基类分为Geometry 和 BufferGeometry两大类，且两类几何体都可以直接相互转化。
+24.Geomtry ：常见几何体（长方体、圆柱体、球体） 、正多面体、平面、2D转3D(拉伸、扫描 ；旋转；管道)、轮廓填充、文字、参数化曲面
+25.TubeGeometry的功能就是通过一条曲线生成一个圆管。它的本质就是以曲线上顶点为基准，生成一系列曲线等径分布的顶点数据。
+26.材料和模型对象要统一，mesh  与  material  geometry需要保持一致 
+27.纹理加载需要马上渲染，不然可能显示不出来。纹理加载本质上就是图片加载
+28.3D美术可是实现不同的纹理映射，纹理UV坐标和顶点位置坐标是一一对应关系，这也就是为什么一张图片可以映射到一个模型的表面，
+只要把图片的每个纹理坐标和模型的顶点位置建立一对一的关系，就可以实现图像到模型的映射。
+29.几何体有两组UV坐标，第一组组用于.map、.normalMap、.specularMap等贴图的映射，第二组用于阴影贴图.lightMap的映射
+30.BufferGeomtry是指一个空的几何体，创建过程表示为：
+num  -> 3个 ->pint 
+num  -> 3个 ->normal  
+num  -> 1个 ->index  顶点构成面
+num  -> 2个 ->uv
+31.利用材质组material可以实现多面体单面贴图的效果。
+
+
+
+
+
+
+
+
+
+
+
+

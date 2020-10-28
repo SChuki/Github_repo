@@ -11,5 +11,14 @@
 解释器的写法和CSS类似，$("*") $("p") $("this") $(":button") $("[type = 'demo']") $(".classname") 等
 常用的事件方法：
 click()  dblclick()  mouseenter()  mouseleave() mousedown() mouseup() hover() focus() blur()失去焦点
-hide(speed ,callback ) show(speed ,callback)  可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
-可选的 callback 参数是隐藏或显示完成后所执行的函数名称。
+hide(speed ,str，callback ) show(speed ,str，callback)  可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
+可选的 callback 参数是隐藏或显示完成后所执行的函数名称。第二个参数是一个字符串，表示过渡使用哪种缓动函数，可以不填。
+（jQuery自身提供"linear" 和 "swing"，其他可以使用相关的插件）
+5. toggle() 切换，转换。其作用是隐藏变显示，显示变隐藏。使用的参数与show和hide一致。
+6.$(selector)选中的元素的个数为n个，则callback函数会执行n次，加上括号只执行一次，不加括号执行多次而且是，隐藏或显示完执行。
+callback函数名后加括号，会立刻执行函数体，而不是等到显示/隐藏完成后才执行；
+callback既可以是函数名，也可以是匿名函数；
+7.淡入淡出效果：
+jQuery fadeIn() 用于淡入已隐藏的元素；jQuery fadeOut() 方法用于淡出可见元素；jQuery fadeToggle() 方法可以在 fadeIn() 与 fadeOut() 方法之间进行切换。
+jQuery fadeTo() 方法允许渐变为给定的不透明度（值介于 0 与 1 之间）。
+8.jQuery slideDown() 方法用于向下滑动元素；jQuery slideUp() 方法用于向上滑动元素；jQuery slideToggle() 方法可以在 slideDown() 与 slideUp() 方法之间进行切换。

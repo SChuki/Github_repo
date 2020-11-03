@@ -79,7 +79,23 @@ num  -> 3个 ->normal
 num  -> 1个 ->index  顶点构成面
 num  -> 2个 ->uv
 31.利用材质组material可以实现多面体单面贴图的效果。
-
+32.凹凸贴图和法线贴图功能相似，只是没有法线贴图表达的几何体表面信息更丰富。
+凹凸贴图是用图片像素的灰度值表示几何表面的高低深度，如果模型定义了法线贴图，就没有必要在使用凹凸贴图。
+不管是法线贴图和凹凸贴图都对图片有要求，在通过贴图使物体更加具有真实。
+33.一般几何体有两套UV坐标，对于Geometry类型几何体而言
+Geometry.faceVertexUvs[0]包含的纹理坐标用于颜色贴图map、法线贴图normalMap等,Geometry.faceVertexUvs[1]包含的第二套纹理贴图用于光照阴影贴图
+，一般通过Threejs几何体API创建的几何体默认只有一组纹理坐标Geometry.faceVertexUvs[0]，所以为了设置光照阴影贴图，
+需要给另一组纹理坐标赋值Geometry.faceVertexUvs[1] = Geometry.faceVertexUvs[0];
+34.一般通过Threejs加载外部模型，解析三维模型数据得到的几何体类型是缓冲类型几何体BufferGeometry，对于BufferGeometry而言两套纹理坐标分别通过.uv和.uv2属性表示。
+geometry.attributes.uv2 = geometry.attributes.uv;
+35.相机 分为三类 正投影相机 OrthographicCamera 透视投影相机 PerspectiveCamera 立方相机 CubeCamera
+相机的属性有 视图矩阵和投影矩阵，机械、工业设计领域常常采用正投影(平行投影), 大型游戏场景往往采用透视投影(中心投影)
+36.相机渲染自适应与相机的渲染区域变化相关，本质上都是通过触发窗口大小变化类调整。
+37.Threejs提供了一系列用户编辑和播放关键帧动画的API,例如定义关键帧KeyframeTrack、剪辑AnimationClip、混合器AnimationMixer、操作AnimationAction（配合clock进行播放）。
+38.文件加载 .obj和.stl 主要是包含模型的顶点信息，到处.obj文件时会同时导出一个.mtl文件包含了材质信息，但它们都属于静态模型，当需需要导出动画时，使用FBX模型。
+39.相对路径最多只能连续使用两个点如果需要使用四层路径时，使用../../demo.js不能用..../demo.js。
+40..obj文件中使用v 坐标 ，vt 纹理坐标 ，vn 法向量坐标 ，f 面坐标  有三个点，支持三个点 以上的面，每个点有前面三个参数使用“/”隔开。
+41.高光材质的环境光源必须要设置成0xffffff，同时世界坐标系能够帮助检查光源设置问题。
 
 
 

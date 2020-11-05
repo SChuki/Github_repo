@@ -1,0 +1,148 @@
+1.CSS 层叠样式表（Cascading Style Sheets）
+2.语法是： 选择器  {属性:值;属性:值;} 属性和值都不需要加引号，同时与json不同的地方在于使用分号结束。 注意属性值和单位之间不要有空格
+3.注释是使用/* ---*/
+4.选择器：
+id 选择器
+类选择器
+伪类选择器
+属性选择器 使用[title=runoob] 可以属性等于
+伪元素选择器
+通配选择器
+标签选择器
+优先级：内联样式 > id 选择器 > 类选择器 = 伪类选择器 = 属性选择器 > 标签选择器 = 伪元素选择器
+5.插入样式表的三种方式：
+外部样式表：<link rel="stylesheet" type="text/css" href="mystyle.css">
+内部样式表：<style>---</style>
+内联样式表:直接使用在标签中 <p style="color:sienna;margin-left:20px">内容</p>
+5.多重样式不冲突的会被继承使用，一般冲突的优先级：
+（内联样式）Inline style > （内部样式）Internal style sheet >（外部样式）External style sheet > 浏览器默认样式
+注意：如果外部样式放在内部样式的后面，则外部样式将覆盖内部样式。
+6.背景 ： background-color  background-image  background-repeat  background-attachment(背景图像是否固定或者随着页面的其余部分滚动。
+background-position
+颜色表示：16进制表示 #0000ff  、RGB rgb(0,0,255) 、颜色名称 red
+背景图像：{background-image:url('image.png');} 
+图像平铺方向：{background-repeat:repeat-x;} 表示水平重复平铺  y  no-repeat
+设置定位：{background-position:right top;} 
+可以直接使用简写： { background:#ffffff url('img_tree.png') repeat-x left top;} 
+7.文本： 颜色：color  对齐方式 text-align ： right  center justify  文本修饰 text-decoration：none  overline underline line-through 
+文本转换：text-transform:uppercase lowercase capitalize  首行缩进： text-indent:50px
+8.字体：格式：font-family:"Times New Roman", Times, serif;  后面两个为备选格式
+样式：font-style:normal   italic 斜体
+大小：font-size:  可以使用px 和 em 或者 百分比% 来设置大小，1em=16px
+粗细：font-weight  ：100-900  400为正常 700为bold
+9.链接  四种状态  可以设置不同的 颜色 文本修饰 背景颜色 
+    a:link - 正常，未访问过的链接
+    a:visited - 用户已访问过的链接
+    a:hover - 当用户鼠标放在链接上时
+    a:active - 链接被点击的那一刻
+a:link {color:#000000;---}      /* 未访问链接*/
+10.列表 ：有序表和无序表两类  ul.a {list-style-type:circle;}  ol.c {list-style-type:upper-roman;}  list-style-image 设置列表样式图像属性
+11.表格：table  th表头  td 内容   tr 表示行  能控制th和td的样式
+设置边框{ border: 1px solid black; width:100%;height:50px;text-align:right;vertical-align:top;padding:50px;}
+12.盒子模型有四层：
+Margin(外边距) - 清除边框外的区域，外边距是透明的。
+Border(边框) - 围绕在内边距和内容外的边框。
+Padding(内边距) - 清除内容周围的区域，内边距是透明的。
+Content(内容) - 盒子的内容，显示文本和图像，使用weight 和hight 设置。
+最终元素的总宽度计算公式是这样的：
+总元素的宽度=宽度+左填充+右填充+左边框+右边框+左边距+右边距
+元素的总高度最终计算公式是这样的：
+总元素的高度=高度+顶部填充+底部填充+上边框+下边框+上边距+下边距
+13.边框border可以设置边框的样式 宽度 颜色 单边框等
+14.轮廓（outline）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。
+轮廓（outline）属性指定元素轮廓的样式、颜色和宽度。
+15.margin 和 padding 都有
+margin-top:100px;
+margin-bottom:100px;
+margin-right:50px;
+margin-left:50px;
+可以使用简写方式。
+16.分组选择器 和嵌套选择器
+使用，号隔开
+嵌套选择器：
+p{ }: 为所有 p 元素指定一个样式。
+.marked{ }: 为所有 class="marked" 的元素指定一个样式。
+.marked p{ }: 为所有 class="marked" 元素内的 p 元素指定一个样式。
+p.marked{ }: 为所有 class="marked" 的 p 元素指定一个样式。
+17.显示： 块元素是一个元素，占用了全部宽度，在前后都是换行符。<h1> <p> <div>
+内联元素只需要必要的宽度，不强制换行。<span> <a>
+它们之间可以通过display:inline;display:block;切换。
+隐藏一个元素可以通过把display属性设置为"none"，或把visibility属性设置为"hidden"。但是请注意，这两种方法会产生不同的结果。
+visibility:hidden可以隐藏某个元素，但隐藏的元素仍需占用与未隐藏之前一样的空间。也就是说，该元素虽然被隐藏了，但仍然会影响布局。
+18.边框：border-radius  box-shadow: 10px 10px 5px #888888;
+边框可以使用图像拉伸或者平铺来美化border-image:url(border.png) 30 30 round; stretch
+19.position 属性的五个值： 静态定位的元素不会受到 top, bottom, left, right影响。
+static
+relative
+fixed
+absolute
+sticky
+固定 {position:fixed;top:30px;right:5px;}
+相对  {position:relative;left:-20px;}
+absolute 相对于父容器的位置
+20.overflow 属性可以控制内容溢出元素框时在对应的元素区间内添加滚动条。
+visible 	默认值。内容不会被修剪，会呈现在元素框之外。
+hidden 	内容会被修剪，并且其余内容是不可见的。
+scroll 	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+auto 	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+inherit 	规定应该从父元素继承 overflow 属性的值。
+21.
+clear:both; 属性指定元素两侧不能出现浮动元素。
+float：right；元属右边可以是浮动元素。
+22.能够控制位置的有：position float margin width 等
+23.组合选择符：
+后代选择器(以空格分隔) div p
+子元素选择器(以大于号分隔）div>p
+相邻兄弟选择器（以加号分隔）div+p  相邻兄弟选择器（Adjacent sibling selector）可选择紧接在另一元素后的元素，且二者有相同父元素。
+普通兄弟选择器（以破折号分隔） div~p
+24.CSS伪类是用来添加一些选择器的特殊效果。伪类可以看作以选中元素为基准点，此元素的一些状态或属性。p:first-child
+25.CSS伪元素是用来添加一些选择器的特殊效果。"first-line" 伪元素用于向文本的首行设置特殊样式。"first-letter" 伪元素用于向文本的首字母设置特殊样式
+:link 	a:link 	选择所有未访问链接
+:visited 	a:visited 	选择所有访问过的链接
+:active 	a:active 	选择正在活动链接
+:hover 	a:hover 	把鼠标放在链接上的状态
+:focus 	input:focus 	选择元素输入后具有焦点
+:first-letter 	p:first-letter 	选择每个<p> 元素的第一个字母
+:first-line 	p:first-line 	选择每个<p> 元素的第一行
+:first-child 	p:first-child 	选择器匹配属于任意元素的第一个子元素的 <p> 元素
+:before 	p:before 	在每个<p>元素之前插入内容
+:after 	p:after 	在每个<p>元素之后插入内容
+:lang(language) 	p:lang(it) 	为<p>元素的lang属性选择一个开始值
+但它是基于文档之外的抽象，所以叫伪类。与伪类针对特殊状态的元素不同的是，伪元素是对元素中的特定内容进行操作，它所操作的层次比伪类更深了一层，
+也因此它的动态性比伪类要低得多。
+26.一般left和right在一个样式中只能使用一次，同时使用会出现兼容问题，当浏览器解释代码的时候发现left和right同时存在时，就会放弃解释right。
+放弃解释后优先级就排不上用场了，即使优先级最高的！important也不会作用。所以left优先级高于right
+27.使用相对位置的时候很容易发生遮掩，这时就需要使用z-index来决定显示的顺序当z-index:-1时，显示在后面类似于背景。
+28.border-color: transparent transparent black transparent;  通过设置context=""；使得盒子的边框变为4个三角形组成的矩形，顺序为上右下左，
+来实现箭头符号。
+29.@media only screen and (max-width: 150000px){} 通过定义在style中的方法响应屏幕宽窄变化。媒体类型
+30.通过transition实现淡出效果，其他效果应该也可以实现。
+.tooltip .tooltiptext {
+    opacity: 0;
+    transition: opacity 1s;
+}
+当悬停的时候淡出
+.tooltip:hover .tooltiptext {
+    opacity: 1;
+}
+31.body {background:#ffffff url('img_tree.png') no-repeat right top;} 中的right top能够对图片实现分割
+32.
+[title~=hello] { color:blue; } 包含指定值的title属性的元素样式的例子，使用（~）分隔属性和值  使用空格连接  hello world
+[lang|=en] { color:blue; } 包含指定值的lang属性的元素样式的例子，使用（|）分隔属性和值 使用-连接  en-gb
+33.::after和::before的使用很简单，可以认为其所在元素上存在一前一后的两个的元素，这两个元素默认是内联元素，但我们可以为其增添样式。
+::after和::before使用的时候一定要注意，必须设置content，否则这两个伪元素是无法显示出来的。而content属性，会作为这两个伪元素的内容嵌入他们中。
+::after和::before是虚拟元素，不会影响真正元素的所在文档的位置，对:first-child或者:last-child这种伪类选择不会造成影响。
+34.::after表示法是在CSS3中引入的，::符号是指伪元素，:符号是指伪类。
+35.可以通过计数器来实现分章或者目录，不过应该不好用。
+
+
+
+
+
+
+
+
+
+
+
+

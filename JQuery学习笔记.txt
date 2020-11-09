@@ -22,3 +22,78 @@ callback既可以是函数名，也可以是匿名函数；
 jQuery fadeIn() 用于淡入已隐藏的元素；jQuery fadeOut() 方法用于淡出可见元素；jQuery fadeToggle() 方法可以在 fadeIn() 与 fadeOut() 方法之间进行切换。
 jQuery fadeTo() 方法允许渐变为给定的不透明度（值介于 0 与 1 之间）。
 8.jQuery slideDown() 方法用于向下滑动元素；jQuery slideUp() 方法用于向上滑动元素；jQuery slideToggle() 方法可以在 slideDown() 与 slideUp() 方法之间进行切换。
+9.通过animate实现动画功能，当存在多个animate 的时候就会就会被当作时一个队列，依次执行。
+10.$("元素").stop()可以停止动画效果。
+11.回调函数.hide(1000,function(){}); 是隐藏后执行。.hide(1000);funtion(); 是异步会完function()。
+12. $("#p1").css("color","red").slideUp(2000).slideDown(2000); 方法链 Chaining 允许我们在一条语句中运行多个 jQuery 方法（在相同的元素上）.css可以设置
+style={color = "red"} 
+13.三个简单实用的用于 DOM 操作的 jQuery 方法：
+    text() - 设置或返回所选元素的文本内容
+    html() - 设置或返回所选元素的内容（包括 HTML 标记）
+    val() - 设置或返回表单字段的值
+ attr() 方法用于获取属性值  也可以通过css()返回属性值，但只能是style中的属性。
+
+prop()函数的结果:
+      1.如果有相应的属性，返回指定属性值。
+      2.如果没有相应的属性，返回值是空字符串。
+attr()函数的结果:
+      1.如果有相应的属性，返回指定属性值。
+      2.如果没有相应的属性，返回值是 undefined。
+对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。对于HTML元素我们自己自定义的DOM属性，在处理时，使用 attr 方法。
+具有 true 和 false 两个属性的属性，如 checked, selected 或者 disabled 使用prop().
+14.text("value") html() val()可以设置属性等的值。
+15.text(function(i,origText){}) 实现回调 i 表示元素索引下标，originText表示原始值。
+16.添加新内容的四个 jQuery 方法：
+    append() - 在被选元素的结尾插入内容
+    prepend() - 在被选元素的开头插入内容
+    after() - 在被选元素之后插入内容
+    before() - 在被选元素之前插入内容
+append/prepend 是在选择元素内部嵌入。
+after/before 是在元素外面追加。
+17.如需删除元素和内容，一般可使用以下两个 jQuery 方法：
+    remove() - 删除被选元素（及其子元素） 强调删除
+    empty() - 从被选元素中删除子元素   强调清空
+18.jQuery 拥有若干进行 CSS 操作的方法。我们将学习下面这些：
+    addClass() - 向被选元素添加一个或多个类
+    removeClass() - 从被选元素删除一个或多个类
+    toggleClass() - 对被选元素进行添加/删除类的切换操作
+    css() - 设置或返回样式属性  注意可以返回属性值
+19.width() 方法设置或返回元素的宽度（不包括内边距、边框或外边距）。
+height() 方法设置或返回元素的高度（不包括内边距、边框或外边距）。
+.css("height")返回值300.4px;  与 .height()返回值是300.4 
+innerWidth() 方法返回元素的宽度（包括内边距）。
+innerHeight() 方法返回元素的高度（包括内边距）。
+20 .遍历 
+jQuery 方法用于向上遍历 DOM 树：
+parent()
+parents()返回被选元素的所有祖先元素，它一路向上直到文档的根元素 (<html>)。 
+parentsUntil() 返回介于两个给定元素之间的所有祖先元素。
+21.下面是两个用于向下遍历 DOM 树的 jQuery 方法：
+    children()
+    find() 回被选元素的后代元素，一路向下直到最后一个后代。  ("*")所有后代 和parents 很像。
+22.在 DOM 树进行水平遍历：
+    siblings() 同级别元素  sibling 兄弟姐妹
+    next()
+    nextAll()
+    nextUntil()
+    prev()
+    prevAll()
+    prevUntil()
+23.AJAX = 异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
+简短地说，在不重载整个网页的情况下，AJAX 通过后台加载数据，并在网页上进行显示。
+load() 方法从服务器加载数据，并把返回的数据放入被选元素中。
+$(selector).load(URL,data,callback);
+回调函数可以设置不同的参数：
+    responseTxt - 包含调用成功时返回的结果内容
+    statusTXT - 包含调用的状态   可以用来判断调用是否成功
+    xhr - 包含 XMLHttpRequest 对象
+24.两种在客户端和服务器端进行请求-响应的常用方法是：GET 和 POST。
+GET - 从指定的资源请求数据
+POST - 向指定的资源提交要处理的数据
+Get 是用来从服务器上获得数据，而 Post 是用来向服务器上传递数据。
+$.get(URL,callback) 的第一个参数是我们希望请求的 URL，第二个参数是回调函数。第一个回调参数存有被请求页面的内容，第二个回调参数存有请求的状态。
+$.post(URL,data,callback); 
+25.$.noConflict(); 可以释放对$标识符的控制，可以让其他框架使用，直接使用jQuery；或者 var jq = $.noConflict();
+
+
+

@@ -134,6 +134,8 @@ float：right；元属右边可以是浮动元素。
 ::after和::before是虚拟元素，不会影响真正元素的所在文档的位置，对:first-child或者:last-child这种伪类选择不会造成影响。
 34.::after表示法是在CSS3中引入的，::符号是指伪元素，:符号是指伪类。
 35.可以通过计数器来实现分章或者目录，不过应该不好用。
+36.元素可以有多个类型，例如<div class="box left border-box"></div>
+37.box-sizing 属性允许您以特定的方式定义匹配某个区域的特定元素。 假如您需要并排放置两个带边框的框，可通过将 box-sizing 设置为 "border-box"。
 
 
 

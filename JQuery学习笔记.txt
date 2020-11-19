@@ -82,7 +82,7 @@ parentsUntil() 返回介于两个给定元素之间的所有祖先元素。
 23.AJAX = 异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
 简短地说，在不重载整个网页的情况下，AJAX 通过后台加载数据，并在网页上进行显示。
 load() 方法从服务器加载数据，并把返回的数据放入被选元素中。
-$(selector).load(URL,data,callback);
+$(selector).load(URL,data,callback);  
 回调函数可以设置不同的参数：
     responseTxt - 包含调用成功时返回的结果内容
     statusTXT - 包含调用的状态   可以用来判断调用是否成功
@@ -91,9 +91,15 @@ $(selector).load(URL,data,callback);
 GET - 从指定的资源请求数据
 POST - 向指定的资源提交要处理的数据
 Get 是用来从服务器上获得数据，而 Post 是用来向服务器上传递数据。
-$.get(URL,callback) 的第一个参数是我们希望请求的 URL，第二个参数是回调函数。第一个回调参数存有被请求页面的内容，第二个回调参数存有请求的状态。
+$.get(URL,callback) 的第一个参数是我们希望请求的 URL，第二个参数是回调函数。回调函数：第一个回调参数存有被请求页面的内容，第二个回调参数存有请求的状态。
 $.post(URL,data,callback); 
 25.$.noConflict(); 可以释放对$标识符的控制，可以让其他框架使用，直接使用jQuery；或者 var jq = $.noConflict();
+26.Jquery的过滤法则：
+.first() 第一个符合要求的元素
+.last() 最后一个符合要求的元素
+.eq(i)  索引为i的元素
+.filter(".demo") 返回类命为demo的元素
+.not(".demo") 返回类名不为demo的元素
 
 
 
